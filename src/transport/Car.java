@@ -5,13 +5,8 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
@@ -85,43 +80,19 @@ public class Car {
         }
     }
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission, String bodyType, String registrationNumber, int sitAmount, boolean isWinterRubber, Key key, Insurance insurance) {
-        this(brand, model, engineVolume, color, year, country, transmission, bodyType, registrationNumber, sitAmount, isWinterRubber);
+    public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission, String bodyType, String registrationNumber, int sitAmount, boolean isWinterRubber, Key key, Insurance insurance, int maxSpeed) {
+        this(brand, model, engineVolume, color, year, country, transmission, bodyType, registrationNumber, sitAmount, isWinterRubber, maxSpeed);
         this.insurance = insurance;
         this.key = key;
     }
 
     public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission,
-               String bodyType, String registrationNumber, int sitAmount, boolean isWinterRubber) {
-        if(brand == null || brand.isBlank()) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if(model == null || model.isBlank()) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
+               String bodyType, String registrationNumber, int sitAmount, boolean isWinterRubber, int maxSpeed) {
+        super(brand, model, color, year, country, maxSpeed);
         if(engineVolume <= 0) {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
-        }
-        if(color == null || color.isBlank()) {
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
-        if(year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
-        }
-        if (country == null || country.isBlank()) {
-            this.country = "default";
-        } else {
-            this.country = country;
         }
         this.transmission = transmission;
         this.bodyType = bodyType;
@@ -147,22 +118,6 @@ public class Car {
                 ", страховка(" + (insurance != null ? insurance.toString() : "нет страховки") + ").";
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
     public String getBodyType() {
         return bodyType;
     }
@@ -177,14 +132,6 @@ public class Car {
 
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public String getTransmission() {
