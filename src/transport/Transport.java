@@ -1,14 +1,18 @@
 package transport;
 
-public class Transport {
+public class Transport<T extends Driver> implements Competitive {
     protected final String brand;
     protected final String model;
-    protected final int year;
+    protected final double engineVolume;
+
+    protected final T driver;
+
+   /* protected final int year;
     protected final String country;
     protected String color;
-    protected int maxSpeed;
+    protected int maxSpeed; */
 
-    public Transport(String brand, String model, String color, int year, String country, int maxSpeed) {
+    public Transport(String brand, String model, /*, String color, int year, String country, int maxSpeed*/double engineVolume, T driver) {
         if(brand == null || brand.isBlank()) {
             this.brand = "default";
         } else {
@@ -19,7 +23,12 @@ public class Transport {
         } else {
             this.model = model;
         }
-        if(color == null || color.isBlank()) {
+        if(engineVolume <= 0) {
+            this.engineVolume = 1.5;
+        } else {
+            this.engineVolume = engineVolume;
+        }
+       /* if(color == null || color.isBlank()) {
             this.color = "белый";
         } else {
             this.color = color;
@@ -34,7 +43,8 @@ public class Transport {
         } else {
             this.country = country;
         }
-        this.maxSpeed = maxSpeed;
+        this.maxSpeed = maxSpeed; */
+        this.driver = driver;
     }
 
     public String getBrand() {
@@ -45,7 +55,11 @@ public class Transport {
         return model;
     }
 
-    public int getYear() {
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    /*public int getYear() {
         return year;
     }
 
@@ -67,15 +81,43 @@ public class Transport {
 
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = maxSpeed;
-    }
+    } */
 
     @Override
     public String toString() {
         return "Марка - " + brand +
                 ", модель - " + model +
+                ", объём двигателя - " + engineVolume/* +
                 ", год выпуска - " + year +
                 ", страна производства - " + country +
                 ", цвет кузова - " + color +
-                ", максимальная скорость передвижения - " + maxSpeed + " км/ч";
+                ", максимальная скорость передвижения - " + maxSpeed + " км/ч" */;
+    }
+
+    public void startMoving() {
+        System.out.println("Движение начато");
+    }
+
+    public void endMoving() {
+        System.out.println("Движение закончено");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Выполняется пит-стоп");
+    }
+
+    @Override
+    public void bestTimeCircle() {
+        System.out.println("Лучшее время круга ");
+    }
+
+    @Override
+    public void maxSpeed() {
+        System.out.println("Максимальная скорость ");
+    }
+
+    public String getDriverInfo() {
+        return driver.toString() + " управляет автомобилем " + this.toString() + " и будет участвовать в заезде";
     }
 }

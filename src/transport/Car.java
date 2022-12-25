@@ -1,21 +1,20 @@
 package transport;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-public class Car extends Transport {
-    private double engineVolume;
+public class Car extends Transport<CarDriver> implements Competitive{
+    public Car(String brand, String model, double engineVolume, CarDriver driver) {
+        super(brand, model, engineVolume, driver);
+    }
+}
+    /* private double engineVolume;
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
     private final int sitAmount;
     private boolean isWinterRubber;
     private Key key;
-    private Insurance insurance;
+    private Insurance insurance; */
 
-    public static class Key {
+   /* public static class Key {
         private final boolean remoteRunEngine;
         private final boolean keyFreeAccess;
 
@@ -37,9 +36,9 @@ public class Car extends Transport {
             return "удалённый запуск двигателя: " + (remoteRunEngine ? "да" : "нет") +
                     ", бесключевой доступ: " + (keyFreeAccess ? "да" : "нет");
         }
-    }
+    } */
 
-    public static class Insurance {
+    /*public static class Insurance {
         private final LocalDate endDate;
         private final BigDecimal price;
         private final String number;
@@ -78,9 +77,9 @@ public class Car extends Transport {
                     ", цена: " + price +
                     ", номер страховки: " + number;
         }
-    }
+    } */
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission, String bodyType, String registrationNumber, int sitAmount, boolean isWinterRubber, Key key, Insurance insurance, int maxSpeed) {
+    /*public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission, String bodyType, String registrationNumber, int sitAmount, boolean isWinterRubber, Key key, Insurance insurance, int maxSpeed) {
         this(brand, model, engineVolume, color, year, country, transmission, bodyType, registrationNumber, sitAmount, isWinterRubber, maxSpeed);
         this.insurance = insurance;
         this.key = key;
@@ -191,4 +190,4 @@ public class Car extends Transport {
     private boolean isCharValid(char c) {
         return "АВЕКМНОРСТУХ".contains(String.valueOf(c));
     }
-}
+} */
