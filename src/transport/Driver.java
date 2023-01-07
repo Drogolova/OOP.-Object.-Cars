@@ -1,9 +1,9 @@
 package transport;
 
 public class Driver {
-   protected String name;
-   protected boolean driverLicense;
-   protected int experience;
+   private String name;
+   private boolean driverLicense;
+   private int experience;
 
     public Driver(String name, boolean driverLicense, int experience) {
         this.name = name;
@@ -21,5 +21,17 @@ public class Driver {
 
     public void pitStop() {
         System.out.println("Выполняется пит-стоп");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isDriverLicense() {
+        return driverLicense;
+    }
+
+    public int getExperience() {
+        return experience;
     }
 }

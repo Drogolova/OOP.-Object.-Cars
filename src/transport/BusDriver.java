@@ -7,6 +7,6 @@ public class BusDriver extends Driver {
 
     @Override
     public String toString() {
-        return "Водитель категории D " + name;
+        return "Водитель категории D " + getName();
     }
 }

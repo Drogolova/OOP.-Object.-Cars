@@ -7,6 +7,6 @@ public class CarDriver extends Driver {
 
     @Override
     public String toString() {
-        return "Водитель категории B " + name;
+        return "Водитель категории B " + getName();
     }
 }

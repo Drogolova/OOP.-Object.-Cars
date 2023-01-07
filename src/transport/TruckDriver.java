@@ -7,6 +7,6 @@ public class TruckDriver extends Driver {
 
     @Override
     public String toString() {
-        return "Водитель категории C " + name;
+        return "Водитель категории C " + getName();
     }
 }
