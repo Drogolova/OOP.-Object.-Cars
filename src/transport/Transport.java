@@ -1,6 +1,6 @@
 package transport;
 
-public class Transport<T extends Driver> implements Competitive {
+public abstract class Transport<T extends Driver> implements Competitive {
     protected final String brand;
     protected final String model;
     protected final double engineVolume;
@@ -120,4 +120,6 @@ public class Transport<T extends Driver> implements Competitive {
     public String getDriverInfo() {
         return driver.toString() + " управляет автомобилем " + this.toString() + " и будет участвовать в заезде";
     }
+
+    public abstract void printType();
 }
