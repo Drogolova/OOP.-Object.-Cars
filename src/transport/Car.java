@@ -3,7 +3,8 @@ package transport;
 public class Car extends Transport<CarDriver> {
 
     CarBodyType bodyType;
-    public Car(String brand, String model, double engineVolume, CarDriver driver, CarBodyType bodyType) {
+    public Car(String brand, String model, double engineVolume, CarDriver driver, CarBodyType bodyType)
+            throws WrongDriverLicenseException {
         super(brand, model, engineVolume, driver);
         this.bodyType = bodyType;
     }
@@ -24,6 +25,11 @@ public class Car extends Transport<CarDriver> {
         } else {
             System.out.println(bodyType);
         }
+    }
+
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Идёт диагностика");
     }
 }
     /* private double engineVolume;

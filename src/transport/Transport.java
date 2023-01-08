@@ -1,18 +1,19 @@
 package transport;
 
 public abstract class Transport<T extends Driver> implements Competitive {
-    protected final String brand;
-    protected final String model;
-    protected final double engineVolume;
+    private final String brand;
+    private final String model;
+    private final double engineVolume;
 
-    protected final T driver;
+    private final T driver;
 
    /* protected final int year;
     protected final String country;
     protected String color;
     protected int maxSpeed; */
 
-    public Transport(String brand, String model, /*, String color, int year, String country, int maxSpeed*/double engineVolume, T driver) {
+    public Transport(String brand, String model, /*, String color, int year, String country, int maxSpeed*/double engineVolume, T driver)
+            throws WrongDriverLicenseException {
         if(brand == null || brand.isBlank()) {
             this.brand = "default";
         } else {
@@ -44,6 +45,9 @@ public abstract class Transport<T extends Driver> implements Competitive {
             this.country = country;
         }
         this.maxSpeed = maxSpeed; */
+        if(driver == null) {
+            throw new WrongDriverLicenseException("Необходимо указать тип прав для транспорта " + brand + ", " + model + "!");
+        }
         this.driver = driver;
     }
 
@@ -122,4 +126,6 @@ public abstract class Transport<T extends Driver> implements Competitive {
     }
 
     public abstract void printType();
+
+    public abstract void passDiagnostic();
 }

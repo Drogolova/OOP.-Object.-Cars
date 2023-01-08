@@ -4,7 +4,8 @@ public class Truck extends Transport<TruckDriver> {
 
     TruckLoadCapacityType loadCapacityType;
 
-    public Truck(String brand, String model, double engineVolume, TruckDriver driver, TruckLoadCapacityType loadCapacityType) {
+    public Truck(String brand, String model, double engineVolume, TruckDriver driver, TruckLoadCapacityType loadCapacityType)
+            throws WrongDriverLicenseException {
         super(brand, model, engineVolume, driver);
         this.loadCapacityType = loadCapacityType;
     }
@@ -24,5 +25,10 @@ public class Truck extends Transport<TruckDriver> {
         } else {
             System.out.println(loadCapacityType);
         }
+    }
+
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Идёт диагностика");
     }
 }
